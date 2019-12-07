@@ -8,19 +8,19 @@ namespace Formula.SimpleResourceServer
 {
     public static class SimpleResourceServerConfiguration
     {
-        public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, IConfiguration configuration, ISimpleResourceServerConfig resourceConfig)
+        public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, IConfiguration configuration, ISimpleResourceServerConfig resourceConfig = null)
         {
-            if (resourceConfig != null) 
+
+            if (resourceConfig == null) resourceConfig = SimpleResourceServerConfigDemo.Get();
+
+            var jwtOptions = resourceConfig.GetJWTBearerOptions();
+            if (jwtOptions != null) 
             {
-                var jwtOptions = resourceConfig.GetJWTBearerOptions();
-                if (jwtOptions != null) 
+                // Adds the authentication services to DI and configures Bearer as the default scheme.                    
+                var jwtBearerBuilder = services.AddAuthentication("Bearer");
+                foreach(var options in jwtOptions)
                 {
-                    // Adds the authentication services to DI and configures Bearer as the default scheme.                    
-                    var jwtBearerBuilder = services.AddAuthentication("Bearer");
-                    foreach(var options in jwtOptions)
-                    {
-                        jwtBearerBuilder.AddJwtBearer("Bearer", options);
-                    }
+                    jwtBearerBuilder.AddJwtBearer("Bearer", options);
                 }
             }
 
