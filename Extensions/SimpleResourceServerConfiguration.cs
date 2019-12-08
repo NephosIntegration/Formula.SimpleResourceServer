@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Formula.SimpleResourceServer
 {
@@ -10,29 +11,13 @@ namespace Formula.SimpleResourceServer
     {
         public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, IConfiguration configuration, ISimpleResourceServerConfig resourceConfig = null)
         {
-
             if (resourceConfig == null) resourceConfig = SimpleResourceServerConfigDemo.Get();
 
             var jwtOptions = resourceConfig.GetJWTBearerOptions();
             if (jwtOptions != null) 
             {
-                // Adds the authentication services to DI and configures Bearer as the default scheme.                    
-                var jwtBearerBuilder = services.AddAuthentication("Bearer");
-                foreach(var options in jwtOptions)
-                {
-                    jwtBearerBuilder.AddJwtBearer("Bearer", options);
-                }
+                services.AddAuthentication().AddJwtBearer(jwtOptions);
             }
-
-            /*
-            jwtBearerBuilder.AddJwtBearer("Bearer", options =>
-            {
-                options.Authority = "http://localhost:5000";
-                options.RequireHttpsMetadata = false;
-
-                options.Audience = "api1";
-            });
-            */
 
             return services;
         }

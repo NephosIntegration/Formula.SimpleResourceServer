@@ -7,6 +7,6 @@ namespace Formula.SimpleResourceServer
 {
     public interface ISimpleResourceServerConfig
     {
-        IEnumerable<Action<JwtBearerOptions>> GetJWTBearerOptions();
+        Action<JwtBearerOptions> GetJWTBearerOptions();
     }
 }
