@@ -9,16 +9,18 @@ namespace Formula.SimpleResourceServer
 {
     public static class SimpleResourceServerConfiguration
     {
-        public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, AuthenticationBuilder authenticationBuilder, ISimpleResourceServerConfig resourceConfig = null)
+        public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, ISimpleResourceServerConfig resourceConfig, AuthenticationBuilder authenticationBuilder = null)
         {
-            if (resourceConfig == null) resourceConfig = SimpleResourceServerConfigDemo.Get();
-
-
-            // If our configuration specifies details on how to 
+            // If we were given an authentication builder, use it, otherwise create one now
+            if (authenticationBuilder == null)
+            {
+                authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            }
+            
             var jwtOptions = resourceConfig.GetJWTBearerOptions();
             if (jwtOptions != null) 
             {
-                authenticationBuilder.AddJwtBearer(jwtOptions);
+                authenticationBuilder.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, jwtOptions);
             }
 
             return services;
