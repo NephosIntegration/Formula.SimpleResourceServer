@@ -2,54 +2,12 @@ using System;
 using System.IO;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Formula.Core;
 
 namespace Formula.SimpleResourceServer
 {
-    public class ResourceServerConfigLoader : ISimpleResourceServerConfig
+    public class ResourceServerConfigLoader : ConfigLoader<ResourceServerConfigDefinition>,  ISimpleResourceServerConfig
     {
-        protected ResourceServerConfigDefinition instance = null;
-
-        public ResourceServerConfigLoader LoadFromFile(String fileName)
-        {
-            var json = File.ReadAllText(fileName);
-            this.instance = JsonSerializer.Deserialize<ResourceServerConfigDefinition>(json);
-            return this;
-        }
-
-        public ResourceServerConfigLoader SaveToFile(String fileName)
-        {
-            if (this.InstanceValid())
-            {
-                var json = JsonSerializer.Serialize(this.instance);
-                var fileStream = File.Open(fileName, FileMode.Append, FileAccess.Write);
-                var fileWriter = new StreamWriter(fileStream);
-                fileWriter.Write(json);
-                fileWriter.Flush();
-                fileWriter.Close();
-            }
-
-            return this;
-        }
-
-        protected Boolean InstanceValid(Boolean throwIfNot = true)
-        {
-            Boolean output = false;
-
-            if (this.instance == null)
-            {
-                if (throwIfNot)
-                {
-                    throw new Exception("Resource Server Configuration not found");
-                }
-            }
-            else
-            {
-                output = true;
-            }
-
-            return output;
-        }
-
         public Action<JwtBearerOptions> GetJWTBearerOptions()
         {
             var output = new Action<JwtBearerOptions>(options => {
@@ -86,6 +44,15 @@ namespace Formula.SimpleResourceServer
                     options.BackchannelTimeout = this.instance.BackchannelTimeout.Value;
                 }
             });
+
+            return output;
+        }
+
+        public static new ResourceServerConfigLoader Get(String fileName, GetDefaults getDefaults = null)
+        {
+            var output = new ResourceServerConfigLoader();
+
+            output.LoadFromFile(fileName, getDefaults);
 
             return output;
         }
