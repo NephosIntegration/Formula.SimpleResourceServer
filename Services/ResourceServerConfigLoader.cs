@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Formula.Core;
+using Formula.SimpleCore;
 
 namespace Formula.SimpleResourceServer
 {

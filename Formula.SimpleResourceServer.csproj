@@ -1,14 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Formula.SimpleResourceServer</AssemblyName>
+    <PackageId>Formula.SimpleResourceServer</PackageId>
+    <Version>1.0.0</Version>
+    <PackageTags>utilities</PackageTags>
+    <Title>Formula Simple Resource Server</Title>
+    <Description>A simple OAuth2 / OpenID Connect Resource Server wrapper for Identity Server.</Description>
+    <Authors>Joshua Williams</Authors>  
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Formula.Core\Formula.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Formula.SimpleCore" Version="1.0.0" />
     <PackageReference Include="IdentityServer4" Version="3.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
   </ItemGroup>

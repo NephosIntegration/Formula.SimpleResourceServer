@@ -40,7 +40,7 @@ services.AddSimpleResourceServer(ResourceServerConfigLoader.Get("resourceServerC
 }));
 ```
 
-*(See ConfigLoader in Formula.Core for details on how this functionality may be leverage for other task)*
+*(See ConfigLoader in Formula.SimpleCore for details on how this functionality may be leverage for other task)*
 
 If you handle other additional authentication mechanisms, you may pass your **AuthenticationBuilder** as a second parameter to this function, otherwise it is assumed that no other calls to **AddAuthentication** have been configured.
 
