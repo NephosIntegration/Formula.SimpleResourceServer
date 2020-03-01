@@ -11,6 +11,9 @@ namespace Formula.SimpleResourceServer
     {
         public static IServiceCollection AddSimpleResourceServer(this IServiceCollection services, ISimpleResourceServerConfig resourceConfig, AuthenticationBuilder authenticationBuilder = null)
         {
+            // Necessary in order to support IdentityDetails class
+            services.AddHttpContextAccessor();
+
             // If we were given an authentication builder, use it, otherwise create one now
             if (authenticationBuilder == null)
             {
