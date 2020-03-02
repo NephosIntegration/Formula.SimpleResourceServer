@@ -66,6 +66,8 @@ var userId = details.UserId;
 // The following properties require additional configuration on the authorization server
 var email = details.Email;
 var roles = details.Roles;
+
+var isAdmin = details.HasRole("Administrator");
 ```
 
 ### Additional Configuration for Roles

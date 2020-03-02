@@ -70,5 +70,17 @@ namespace Formula.SimpleResourceServer
                 return this._roles;
             }
         }
+
+        public Boolean HasRole(String role)
+        {
+            var hasRole = false;
+
+            if (this.Roles != null & this.Roles.Count() > 0)
+            {
+                hasRole = this.Roles.Contains(role);
+            }
+
+            return hasRole;
+        }
     }
 }
