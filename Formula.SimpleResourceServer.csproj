@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleResourceServer</AssemblyName>
     <PackageId>Formula.SimpleResourceServer</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple Resource Server</Title>
     <Description>A simple OAuth2 / OpenID Connect Resource Server wrapper for Identity Server.</Description>
