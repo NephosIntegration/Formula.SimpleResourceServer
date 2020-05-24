@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleResourceServer</AssemblyName>
     <PackageId>Formula.SimpleResourceServer</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple Resource Server</Title>
     <Description>A simple OAuth2 / OpenID Connect Resource Server wrapper for Identity Server.</Description>
@@ -19,7 +19,11 @@
       <Pack>true</Pack>
       <PackagePath>README.txt</PackagePath>
     </Content>
-  </ItemGroup>  
+  </ItemGroup>
+
+  <!--ItemGroup>
+    <ProjectReference Include="..\Formula.SimpleCore\Formula.SimpleCore.csproj" />
+  </ItemGroup-->
 
   <ItemGroup>
     <PackageReference Include="Formula.SimpleCore" Version="1.0.*" />
