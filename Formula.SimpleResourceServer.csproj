@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleResourceServer</AssemblyName>
     <PackageId>Formula.SimpleResourceServer</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple Resource Server</Title>
     <Description>A simple OAuth2 / OpenID Connect Resource Server wrapper for Identity Server.</Description>
@@ -27,8 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Formula.SimpleCore" Version="1.0.*" />
-    <PackageReference Include="IdentityServer4" Version="3.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.27" />
   </ItemGroup>
 
 </Project>
