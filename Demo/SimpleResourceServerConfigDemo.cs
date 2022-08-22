@@ -1,5 +1,5 @@
-using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System;
 
 namespace Formula.SimpleResourceServer
 {
@@ -7,7 +7,8 @@ namespace Formula.SimpleResourceServer
     {
         public virtual Action<JwtBearerOptions> GetJWTBearerOptions()
         {
-            var output = new Action<JwtBearerOptions>( options => {
+            var output = new Action<JwtBearerOptions>(options =>
+            {
                 options.Authority = "http://localhost:5000";
                 options.RequireHttpsMetadata = false;
 
@@ -17,7 +18,7 @@ namespace Formula.SimpleResourceServer
             return output;
         }
 
-        public static SimpleResourceServerConfigDemo Get() 
+        public static SimpleResourceServerConfigDemo Get()
         {
             return new SimpleResourceServerConfigDemo();
         }

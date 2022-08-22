@@ -1,8 +1,7 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 
 namespace Formula.SimpleResourceServer
 {
@@ -10,18 +9,18 @@ namespace Formula.SimpleResourceServer
     {
         protected IHttpContextAccessor _httpContextAccessor = null;
         protected ClaimsPrincipal _user = null;
-        
+
         public IdentityDetails(IHttpContextAccessor httpContextAccessor)
         {
             this._httpContextAccessor = httpContextAccessor;
             this._user = httpContextAccessor.HttpContext.User;
         }
 
-        protected Boolean _userIdFetched = false;
-        protected String _userId = null;
-        public String UserId 
+        protected bool _userIdFetched = false;
+        protected string _userId = null;
+        public string UserId
         {
-            get 
+            get
             {
                 if (!this._userIdFetched)
                 {
@@ -35,11 +34,11 @@ namespace Formula.SimpleResourceServer
             }
         }
 
-        protected Boolean _emailFetched = false;
-        protected String _email = null;
-        public String Email 
+        protected bool _emailFetched = false;
+        protected string _email = null;
+        public string Email
         {
-            get 
+            get
             {
                 if (!this._emailFetched)
                 {
@@ -53,11 +52,11 @@ namespace Formula.SimpleResourceServer
             }
         }
 
-        protected Boolean _rolesFetched = false;
-        protected List<String> _roles = null;
-        public List<String> Roles 
+        protected bool _rolesFetched = false;
+        protected List<string> _roles = null;
+        public List<string> Roles
         {
-            get 
+            get
             {
                 if (!this._rolesFetched)
                 {
@@ -71,7 +70,7 @@ namespace Formula.SimpleResourceServer
             }
         }
 
-        public Boolean HasRole(String role)
+        public bool HasRole(string role)
         {
             var hasRole = false;
 
