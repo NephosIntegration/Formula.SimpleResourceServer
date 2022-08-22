@@ -1,16 +1,15 @@
-using System;
-using System.IO;
-using System.Text.Json;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Formula.SimpleCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System;
 
 namespace Formula.SimpleResourceServer
 {
-    public class ResourceServerConfigLoader : ConfigLoader<ResourceServerConfigDefinition>,  ISimpleResourceServerConfig
+    public class ResourceServerConfigLoader : ConfigLoader<ResourceServerConfigDefinition>, ISimpleResourceServerConfig
     {
         public Action<JwtBearerOptions> GetJWTBearerOptions()
         {
-            var output = new Action<JwtBearerOptions>(options => {
+            var output = new Action<JwtBearerOptions>(options =>
+            {
                 options.Authority = this.instance.Authority;
                 options.RequireHttpsMetadata = this.instance.RequireHttpsMetadata;
                 options.Audience = this.instance.Audience;
@@ -48,7 +47,7 @@ namespace Formula.SimpleResourceServer
             return output;
         }
 
-        public static new ResourceServerConfigLoader Get(String fileName, GetDefaults getDefaults = null)
+        public static new ResourceServerConfigLoader Get(string fileName, GetDefaults getDefaults = null)
         {
             var output = new ResourceServerConfigLoader();
 
