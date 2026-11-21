@@ -3,12 +3,12 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleResourceServer</AssemblyName>
     <PackageId>Formula.SimpleResourceServer</PackageId>
-    <Version>1.8.0</Version>
+    <Version>1.10.0</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple Resource Server</Title>
     <Description>A simple OAuth2 / OpenID Connect Resource Server wrapper for Identity Server.</Description>
     <Authors>Joshua Williams</Authors>  
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RepositoryUrl>https://github.com/NephosIntegration/Formula.SimpleResourceServer</RepositoryUrl>
     <PackageProjectUrl>https://github.com/NephosIntegration/Formula.SimpleResourceServer</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -28,8 +28,8 @@
   </ItemGroup-->
 
   <ItemGroup>
-    <PackageReference Include="Formula.SimpleCore" Version="1.8.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
+    <PackageReference Include="Formula.SimpleCore" Version="1.10.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.15" />
   </ItemGroup>
 
 </Project>
